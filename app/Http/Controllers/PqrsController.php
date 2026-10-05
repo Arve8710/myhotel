@@ -18,7 +18,7 @@ class PqrsController extends Controller
         $request->validate([
             'nombres'          => 'required|string|max:100',
             'apellidos'        => 'required|string|max:100',
-            'correo'           => 'required|email',
+            'correo'           => 'required|email:rfc,dns|max:100',
             'nacionalidad'     => 'nullable|in:Nacional,Extranjero',
             'tipo_documento'   => 'nullable|in:Cédula,Pasaporte,Visa',
             'numero_documento' => 'nullable|string|max:20',
@@ -41,6 +41,6 @@ class PqrsController extends Controller
             'acepto'           => $request->has('acepto'),
         ]);
 
-        return redirect()->route('mensajes')->with('success', '¡Mensaje enviado correctamente!');
+       return redirect()->route('nosotros')->with('success', '¡Mensaje enviado correctamente!');
     }
 }
